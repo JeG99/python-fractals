@@ -1,14 +1,18 @@
+# If on linux, be sure to do:
+#   sudo apt-get install python3-tk
+# https://stackoverflow.com/questions/56656777/userwarning-matplotlib-is-currently-using-agg-which-is-a-non-gui-backend-so
+
 from fractal import Fractal
 
 dim = (1080, 1920) # resolucion de la imagen
 
-#frac = Fractal('mandelbrot', 100, dim, -3.3, 1.9, -1.5, 1.5)
+frac = Fractal('mandelbrot', 100, dim, -3.3, 1.9, -1.5, 1.5)
 
 # el intento mamalon (8 horas)
 #frac = Fractal('mandelbrot', 8000, dim, -3.3 + 0.693333, 1.9 - 0.693333, -1.1, 1.1)
 
 # un julia set bien chido (pero no tan mamalon como el mandelbrot anterior)
-frac = Fractal('julia', 8000, dim, -3.3 + 0.693333, 1.9 - 0.693333, -1.1, 1.1) 
+#frac = Fractal('julia', 8000, dim, -3.3 + 0.693333, 1.9 - 0.693333, -1.1, 1.1) 
 
 frac.generate() # genera el fractal
 frac.show_fractal() # muestra el fractal en una ventana
