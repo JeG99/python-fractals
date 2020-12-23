@@ -1,9 +1,0 @@
-from fractal import Fractal
-
-dim = (1080, 1920) # resolucion de la imagen
-#mandel = Fractal('mandelbrot', 20, dim, -3.7, 1.5, -1.5, 1.5) # '<julia | mandelbrot>, iteraciones, tupla de dimensiones, minimo en X, maximo en X, minimo en Y, maximo en Y
-mandel = Fractal('mandelbrot', 100, dim, -3.3, 1.9, -1.5, 1.5)
-
-mandel.generate() # genera el fractal
-mandel.show_fractal() # muestra el fractal en una ventana
-mandel.save_fractal('fractal', 'jpg') # guarda el fractal con el nombre y tipo de imagen dados (si no se da el tipo se guarda en png automaticamente)
