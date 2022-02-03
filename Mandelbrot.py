@@ -1,7 +1,8 @@
 import fvars
 
-def mandel(re, im, max_iter):
-    c = complex(re, im)
+def mandelbrot(complex_number):
+    c = complex_number
+    #c = complex(re, im)
     z = 0.0j
 
     for i in range(fvars.fractal_vars['ITERATIONS']):
@@ -9,4 +10,3 @@ def mandel(re, im, max_iter):
         if (z.real * z.real + z.imag * z.imag) >= 4:
             return i
     return fvars.fractal_vars['ITERATIONS']
-

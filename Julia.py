@@ -1,7 +1,8 @@
 import fvars
 
-def julia(re, im, max_iter):
-    p = complex(re, im)
+def julia(complex_number):
+    p = complex_number
+    #p = complex(re, im)
     for i in range(fvars.fractal_vars['ITERATIONS']):
         p = f(p)
         if (p.real*p.real + p.imag*p.imag) >= 4:

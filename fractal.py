@@ -4,7 +4,7 @@ import fvars
 
 from PIL import Image
 from pylab import imshow, show
-from Mandelbrot import mandel
+from Mandelbrot import mandelbrot, mandelbrot
 from Julia import julia
 
 class Fractal():
@@ -21,23 +21,19 @@ class Fractal():
         self.max_y = max_y
 
         self.verbose = verbose
-    
-        self.canvas = np.zeros(self.dimensions, dtype=np.uint8)
+        
         self.pixelHeight = (self.max_y - self.min_y) / float(self.dimensions[0])
         self.pixelWidth = (self.max_x - self.min_x) / float(self.dimensions[1])
+        self.canvas = np.array(np.arange(1, dimensions[0] + 1)[:, None] * np.float(self.pixelHeight) * np.complex('j') + np.arange(1, dimensions[1] + 1) * np.float(self.pixelWidth))
+        self.canvas += self.min_x + self.min_y * np.complex('j')
 
     def generate(self):
-        for x in range(self.dimensions[1]):
-            dx = x * self.pixelWidth
-            a = self.min_x + dx
-            for y in range(self.dimensions[0]):
-                dy =  y * self.pixelHeight
-                b = self.min_y + dy
-                if self.fractal_type == 'julia':
-                    self.canvas[x, y] = julia(a, b, self.iterations)
-                elif self.fractal_type == 'mandelbrot':
-                    self.canvas[y, x] = mandel(a, b, self.iterations)
-
+        if self.fractal_type == 'julia':
+            func = np.vectorize(julia)
+        elif self.fractal_type == 'mandelbrot':
+            func = np.vectorize(mandelbrot)
+        self.canvas = func(self.canvas).real.astype(np.uint8)
+        
     def show_fractal(self):
         imshow(self.canvas)
         show()
