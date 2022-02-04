@@ -1,3 +1,1 @@
-fractal_vars = {
-    'ITERATIONS': 100
-}
+ITERATIONS = 100

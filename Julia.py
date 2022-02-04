@@ -1,15 +1,20 @@
-import fvars
+import numpy as np
 
+from fvars import ITERATIONS
+from numba import njit, vectorize, prange, complex128
+
+@njit
 def julia(complex_number):
     p = complex_number
     #p = complex(re, im)
-    for i in range(fvars.fractal_vars['ITERATIONS']):
+    for i in prange(ITERATIONS):
         p = f(p)
         if (p.real*p.real + p.imag*p.imag) >= 4:
             return i
-    return fvars.fractal_vars['ITERATIONS']
+    return ITERATIONS
 
-def f(self, z):
+@vectorize([complex128(complex128)])
+def f(z):
     #return z*z
     #return ((z * z + z) / np.log(z)) + complex(0.268, 0.060)
     #return z * np.exp(z) + 0.04
