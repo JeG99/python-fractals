@@ -1,12 +1,12 @@
 import numpy as np
 import fvars
+import matplotlib.pyplot as plt
 
 from multiprocessing import Pool, cpu_count
 from PIL import Image
 from pylab import imshow, show
 from Mandelbrot import mandelbrot, mandelbrot
 from Julia import julia
-from numba import njit, prange
 
 
 class Fractal():
@@ -38,6 +38,7 @@ class Fractal():
         print(self.canvas[first_array:last_array])
 
     def generate(self):
+        print('Calculating...')
         self.canvas = self.func(self.canvas)
         self.canvas = self.canvas.real.astype(np.uint8)
 
@@ -46,8 +47,10 @@ class Fractal():
         show()
 
     def save_fractal(self, file_name, file_format='png'):
-        img = Image.fromarray(self.canvas)
-        img.save(file_name + '.' + file_format)
+        cm = plt.get_cmap('nipy_spectral')
+        # cm = plt.get_cmap('prism')
+        colored_image = cm(self.canvas)
+        Image.fromarray((colored_image[:, :, :3] * 255).astype(np.uint8)).save('{}.{}'.format(file_name, file_format))
 
     def get_canvas(self):
         return self.canvas
