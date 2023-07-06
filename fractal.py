@@ -42,13 +42,14 @@ class Fractal():
         self.canvas = self.func(self.canvas)
         self.canvas = self.canvas.real.astype(np.uint8)
 
+
     def show_fractal(self):
         imshow(self.canvas)
         show()
 
     def save_fractal(self, file_name, file_format='png'):
-        cm = plt.get_cmap('nipy_spectral')
-        # cm = plt.get_cmap('prism')
+        # cm = plt.get_cmap('nipy_spectral')
+        cm = plt.get_cmap('gist_heat')
         colored_image = cm(self.canvas)
         Image.fromarray((colored_image[:, :, :3] * 255).astype(np.uint8)).save('{}.{}'.format(file_name, file_format))
 

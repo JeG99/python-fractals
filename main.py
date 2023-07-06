@@ -7,9 +7,10 @@ from fractal import Fractal
 #dim = (1080, 1920) # resolucion de la imagen 
 
 if __name__ == '__main__':
-    dim = (768 * 4, 1024 * 4)
-    # frac = Fractal('mandelbrot', 100, dim, -3.3, 1.9, -1.5, 1.5) # fucked up mandelbrot
-    frac = Fractal('julia', 10000, dim, -2, 2, -1.5, 1.5)
+    r = 1
+    dim = (768 * r, 1024 * r)
+    # frac = Fractal('mandelbrot', 2500, dim, -3.3, 1.9, -1.5, 1.5) # fucked up mandelbrot
+    frac = Fractal('julia', 2500, dim, -2, 2, -1.5, 1.5)
     # frac = Fractal('mandelbrot', 2500, dim, -0.73786069063659, -0.73753744616721, -0.17466298343187, -0.17442055007983) # tentacle
     frac.generate()
     # frac.show_fractal()
