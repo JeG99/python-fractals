@@ -10,7 +10,7 @@ if __name__ == '__main__':
     r = 1
     dim = (768 * r, 1024 * r)
     # frac = Fractal('mandelbrot', 2500, dim, -3.3, 1.9, -1.5, 1.5) # fucked up mandelbrot
-    frac = Fractal('julia', 2500, dim, -2, 2, -1.5, 1.5)
+    frac = Fractal('julia', 100, dim, -2, 2, -1.5, 1.5)
     # frac = Fractal('mandelbrot', 2500, dim, -0.73786069063659, -0.73753744616721, -0.17466298343187, -0.17442055007983) # tentacle
     frac.generate()
     # frac.show_fractal()
